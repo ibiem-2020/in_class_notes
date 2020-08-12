@@ -1,0 +1,117 @@
+---
+title: "Data Structures"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+cats = data.frame(coat = c("calico", "black", "tabby"),
+                  weight = c(2.1, 5.0, 3.2),
+                  like_string = c(1,0,1))
+cats
+```
+
+
+```{r}
+dir.create("data")
+write.csv(x=cats, file="data/feline-data.csv", row.names = FALSE)
+```
+
+```{r}
+cats = read.csv(file="data/feline-data.csv")
+print(cats)
+```
+
+```{r}
+cats$weight
+```
+
+```{r}
+cats$coat
+```
+
+```{r}
+cats$weight + 2
+```
+
+```{r}
+cats
+```
+
+```{r}
+paste("My cat is", cats$coat)
+```
+
+```{r}
+cats$coat + cats$weight
+```
+
+# Data Types
+```{r}
+typeof(cats$weight)
+```
+
+```{r}
+typeof(cats$coat)
+```
+
+
+```{r}
+typeof(5.73)
+```
+
+```{r}
+typeof(27L)
+```
+```{r}
+typeof(1+1i)
+```
+
+```{r}
+typeof(TRUE)
+```
+
+```{r}
+typeof("IBIEM")
+```
+
+```{r}
+newcats = read.csv("data/feline-data.csv")
+newcats
+```
+```{r}
+cats
+```
+```{r}
+cats$weight + 2
+```
+
+```{r}
+newcats$weight + 2
+```
+
+```{r}
+class(cats)
+```
+```{r}
+my_vector = vector(length = 3)
+my_vector
+```
+
+```{r}
+another_vector = vector(mode="character", length =3)
+another_vector
+```
+
+```{r}
+str(another_vector)
+```
+
+
+```{r}
+str(cats$weight)
+```
+

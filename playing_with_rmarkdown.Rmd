@@ -1,0 +1,133 @@
+---
+title: "Playing with Rmarkdown"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Header 1
+
+**This is bold**
+
+_italics_
+
+`THis is code`
+
+```
+This is block code
+```
+
+## Header 2
+
+### Header 3
+
+#### Header 4
+
+## R Markdown
+[Link to article about Excel being bad for Genomic Data](https://www.theverge.com/2020/8/6/21355674/human-genes-rename-microsoft-excel-misreading-dates)
+
+[Internal Link](#Including Plots)
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+```{r}
+important_value = 3*7
+```
+
+We found that there were `r important_value` rabbits in the garden. 
+
+One plus one is `r 1+1`.
+
+
+```{bash}
+
+```
+
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, eval=TRUE, include=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+# R Introduction
+
+```{r}
+1 + 100
+```
+
+```{r}
+3 + 5 * 2
+```
+```{r}
+(3 + 5) * 2 # showing order of operation
+```
+
+```{r}
+(3 + 5) * 2 showing order of operation
+```
+```{r}
+my_variable = 1
+```
+
+
+```{r}
+1 = 1
+```
+
+```{r}
+1 != 2
+```
+
+```{r}
+1 <= 2
+```
+
+
+```{r}
+x = 1/5
+x
+```
+
+```{r}
+y <- 25
+30 -> z
+```
+
+```{r}
+seq(10)
+```
+
+```{r}
+seq(10) * 3
+```
+```{r}
+2^3
+```
+
+
+```{r}
+seq(10) ^ 3
+```
+
+```{r}
+ls()
+```
+```{r}
+x = 10
+y = 20
+rm(x)
+```
+
+
