@@ -115,3 +115,257 @@ str(another_vector)
 str(cats$weight)
 ```
 
+```{r}
+combine_vector = c(2L,3L,4L)
+combine_vector
+typeof(combine_vector)
+```
+
+```{r}
+typeof(c(TRUE, FALSE, TRUE))
+```
+```{r}
+typeof(c(10,20))
+```
+
+```{r}
+typeof(3i+1)
+```
+```{r}
+typeof(c(TRUE, 19.0, 64))
+```
+
+
+
+> Type Polls
+
+
+# Type Coercion
+
+
+logical -> integer -> numeric -> complex -> character
+where -> can be read as are transformed into
+```{r}
+5i+5
+```
+
+
+```{r}
+typeof(c(25, TRUE, 2.73))
+```
+
+```{r}
+c(TRUE, "apple", 25)
+```
+
+```{r}
+typeof(c("17", "23", "2"))
+```
+```{r}
+as.integer(c("17", "23", "2"))
+typeof(as.integer(c("17", "23", "2")))
+```
+```{r}
+as.integer(c("17", "baking", "2"))
+```
+
+```{r}
+as.logical(c(25,7, 2, 0))
+```
+
+
+```{r}
+cats
+```
+
+```{r}
+as.logical(cats$like_string)
+```
+
+```{r}
+cats
+```
+
+```{r}
+cats$like_string = as.logical(cats$like_string)
+```
+
+```{r}
+cats
+```
+
+```{r}
+ab_vector = c("a", "b")
+ab_vector
+```
+
+```{r}
+c("z", ab_vector, "d", ab_vector)
+```
+```{r}
+ab_vector
+```
+
+```{r}
+seq(100)
+```
+```{r}
+10:30
+```
+
+```{r}
+seq(10,30, by=0.4)
+```
+
+```{r}
+big_vec = 1:1000
+head(big_vec, n=10)
+```
+
+```{r}
+tail(big_vec, n=3)
+```
+
+```{r}
+length(big_vec)
+```
+
+```{r}
+my_vec = c(bob=1,alice=5, carl=7)
+my_vec["carl"]
+```
+```{r}
+names(my_vec)
+```
+
+```{r}
+names(my_vec) = c("arthur", "eugene", "kim")
+my_vec
+```
+
+
+> Type Coercion Poll
+
+
+## Factors
+
+```{r}
+cats
+```
+
+```{r}
+coats = c("tabby", "tortoiseshell", "tortoiseshell", "black", "tabby")
+coats
+str(coats)
+```
+
+```{r}
+CATegories = factor(coats)
+CATegories
+```
+```{r}
+class(CATegories)
+```
+
+
+```{r}
+str(CATegories)
+```
+```{r}
+levels(CATegories)
+```
+```{r}
+CATegories
+```
+
+```{r}
+as.integer(CATegories)
+```
+
+```{r}
+x = as.factor(c("7", "17", "25"))
+x
+```
+
+```{r}
+as.integer(x)
+```
+
+```{r}
+mydata = c("case", "control", "case", "case")
+factor(mydata)
+
+```
+
+```{r}
+mydata = c("case", "control", "case", "case")
+factor(mydata, levels=c("control", "case"))
+```
+
+## List
+```{r}
+list_example = list(1, "a", TRUE, 1+4i)
+list_example
+```
+```{r}
+another_list = list(title="Numbers", numbers=1:10, data=TRUE)
+another_list
+```
+```{r}
+another_list["numbers"]
+```
+
+```{r}
+cats
+```
+
+```{r}
+typeof(cats)
+```
+
+```{r}
+cats
+```
+
+```{r}
+cats$weight
+```
+
+```{r}
+str(cats[,2])
+```
+```{r}
+cats[3,2]
+```
+```{r}
+cats[3,]
+```
+
+## Matrices
+```{r}
+matrix_example = matrix(0, ncol=6, nrow=3)
+matrix_example
+```
+
+```{r}
+class(matrix_example)
+```
+
+
+```{r}
+typeof(matrix_example)
+```
+
+```{r}
+str(matrix_example)
+```
+
+```{r}
+dim(matrix_example)
+```
+
+```{r}
+nrow(matrix_example)
+ncol(matrix_example)
+```
+
