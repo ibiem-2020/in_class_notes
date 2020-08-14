@@ -1,0 +1,91 @@
+---
+title: "Control Flow"
+output: html_document
+---
+
+# If, else
+```{r}
+x = 15
+
+if (x >= 10) {
+  print("x is greater than or equal to 10")
+  print("DONE!!")
+} else if (x > 5){
+  print("x is greater than 5, but less than 10")
+} else if (x == 15){
+  print("x is exactly 15")
+} else {
+  print("x is less than 10")
+}
+
+x
+```
+
+```{r}
+if (any(gapminder$year == 1995)){
+  print("YES! there is data from 1995")
+} else {
+  print("NO, there is NOT data from 1995")
+}
+```
+
+```{r}
+gapminder$year == 1997
+```
+
+# Repeating Yourself
+
+```{r}
+for (person in c("alice", "bob", "carl")) {
+  print(paste("Hello", person))
+}
+```
+
+```{r}
+output = vector(length=5*4)
+for (i in 1:5){
+  for (j in c("a", "b", "c", "d")){
+    output[j+(i)] = c(output, paste(i,j))
+  }
+}
+output
+```
+
+```{r}
+output = vector(length=20)
+for (i in 1:20){
+    output[i] = i
+}
+output
+```
+
+```{r}
+z = 1
+while(z > 0.1){
+  z = runif(1)
+  print(z)
+}
+
+```
+
+
+```{r}
+z = 1
+while(z > 0){
+  z = runif(1)
+  print(z)
+}
+
+```
+
+```{r eval=FALSE, include=FALSE}
+z = 1
+while(z > 0){
+  print(z)
+}
+
+```
+
+
+Finished at end of bootcamp: 
+http://swcarpentry.github.io/r-novice-gapminder/07-control-flow/index.html

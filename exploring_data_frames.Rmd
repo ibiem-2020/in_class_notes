@@ -100,4 +100,70 @@ cats["weight", "coat"]
 ```
 
 
+```{r}
+cats[,c("age", "weight")]
+```
 
+```{r}
+newcats = cats[-3,]
+rownames(newcats) = c("apple", "pear", "banana")
+newcats
+```
+
+```{r}
+newcats2 = cats[-3,]
+newcats2
+rownames(newcats2) = NULL
+rownames(newcats2)
+newcats2
+```
+
+## Appending to Data Frames
+
+```{r}
+cats
+twocats = (rbind(cats, cats))
+rownames(twocats)
+```
+
+## Realistics
+```{r}
+gapminder = read.csv("/data/gapminder_data.csv")
+```
+
+```{r}
+download.file("https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/_episodes_rmd/data/gapminder_data.csv", destfile = "data/gapminder_data.csv")
+```
+```{r}
+str(gapminder)
+```
+```{r}
+```
+
+
+```{r}
+range(gapminder$lifeExp)
+```
+```{r}
+length(gapminder)
+```
+```{r}
+nrow(gapminder)
+```
+
+```{r}
+dim(gapminder)
+```
+
+
+```{r}
+ncol(gapminder)
+```
+
+```{r}
+head(gapminder, n=10)
+```
+
+
+
+http://swcarpentry.github.io/r-novice-gapminder/05-data-structures-part2/index.html#realistic-example

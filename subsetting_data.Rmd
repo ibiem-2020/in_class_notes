@@ -1,0 +1,335 @@
+---
+title: "Subsetting Data"
+output: html_document
+---
+
+```{r}
+x = c(a=5.4, b=6.2, c=7.1, d=4.8, e=7.5)
+x
+```
+
+```{r}
+x[1]
+```
+```{r}
+x[c(1,3)]
+```
+
+```{r}
+# x[1:4]
+1:4
+```
+
+```{r}
+x[c(1,2,3,4)]
+```
+```{r}
+x[c(1,1,3,2)]
+```
+
+```{r}
+x
+```
+
+```{r}
+x[10]
+```
+
+```{r}
+x[0]
+```
+
+# Skipping and removing
+
+```{r}
+x[-2]
+```
+
+```{r}
+x[c(-1,-3)]
+```
+
+```{r}
+x[-2:4]
+```
+
+```{r}
+-2:4
+```
+```{r}
+seq(-2,4)
+```
+
+```{r}
+x[-(2:4)]
+```
+
+```{r}
+x = x[-4]
+x
+```
+
+# Subset by Name
+
+```{r}
+x[c("c","b")]
+```
+
+# Subset with Logical operation
+```{r}
+x[c(FALSE, FALSE, TRUE,FALSE, TRUE)]
+```
+
+
+```{r}
+x
+x > 7
+```
+```{r}
+x[x > 7]
+```
+
+```{r}
+x[names(x) == "a"]
+```
+
+greater than 5 and  less than 7
+```{r}
+x[5<x & x<7]
+```
+
+```{r}
+5<x
+x<7
+5<x & x<7
+```
+```{r}
+5<x
+x<7
+5<x | x<7
+```
+
+
+less than 5 OR  greater than 7
+```{r}
+x[5>x | x>7]
+```
+
+```{r}
+5>x
+x>7
+5>x | x>7
+
+5>x & x>7
+
+```
+
+```{r}
+some_true = c(FALSE, TRUE, FALSE, TRUE)
+all_true = c(TRUE, TRUE)
+all_false = c(FALSE, FALSE)
+
+any(some_true)
+any(all_true)
+any(all_false)
+```
+
+```{r}
+all(some_true)
+all(all_true)
+all(all_false)
+```
+
+```{r}
+y = c(a=1, a=2, a=3, b=25, c=7, d=5)
+y
+```
+
+```{r}
+y["a"]
+```
+
+```{r}
+y[names(y)=="a"]
+```
+
+```{r}
+y[names(y) %in% c("a", "d")]
+```
+
+```{r}
+y
+names(y) %in% c("a", "d")
+```
+
+```{r}
+names(y) == "a" | names(y) =="d"
+```
+
+```{r}
+x
+x[names(x) != c("a", "c")]
+```
+
+```{r}
+x
+w = c(x, f=27)
+w
+w[names(w) != c("a", "c")]
+
+```
+
+
+```{r}
+z= seq(6)
+z
+z[c(FALSE, TRUE, FALSE, TRUE)]
+```
+
+```{r}
+
+x[names(x) %in% c("a", "c")]
+x[!(names(x) %in% c("a", "c"))]
+
+```
+
+
+```{r}
+c(FALSE, TRUE, TRUE, TRUE)
+!c(FALSE, TRUE, TRUE, TRUE)
+
+```
+
+```{r}
+y= c(1, 2, 3, NA, 5)
+y
+is.na(y)
+na.omit
+```
+
+```{r}
+y = na.omit(y)
+
+```
+
+```{r}
+y = c(2, 3, 4, 100/0, 5, NA, NaN)
+y
+is.finite(y)
+```
+
+## Factor Subset
+
+```{r}
+f = factor(c("a", "a", "b", "c", "c", "d"))
+f
+```
+
+```{r}
+f[f == "a"]
+```
+
+```{r}
+f[2:4]
+```
+
+
+## Matrix Subset
+```{r}
+set.seed(2)
+rnorm(10)
+```
+```{r}
+rnorm(10)
+```
+
+```{r}
+set.seed(1)
+m = matrix(rnorm(4*6), ncol=4, nrow=6)
+m
+```
+```{r}
+m[1:3,3:4]
+```
+```{r}
+m[,2:3]
+```
+
+```{r}
+m[,c(1,3)]
+```
+```{r}
+m[1,, drop=FALSE]
+```
+
+```{r}
+m[1,10]
+```
+```{r}
+z = matrix(1:20, nrow=4, ncol=5, byrow = TRUE)
+z
+z[17]
+```
+# List Subset 
+
+```{r}
+xlist = list(a="IBIEM", b = 1:20, data=head(iris))
+xlist
+```
+
+```{r}
+xlist[1:2]
+```
+
+```{r}
+xlist[[1:2]]
+```
+Stopped for luch here!!
+
+# Subsetting Data frames
+
+```{r}
+gapminder
+```
+
+```{r}
+head(gapminder["pop"])
+```
+
+```{r}
+gapminder["lifeExp"]
+```
+
+```{r}
+gapminder[3, ]
+```
+
+```{r}
+gapminder[3, ,drop=TRUE]
+```
+
+```{r}
+gapminder[[2]]
+```
+
+```{r}
+gapminder[,2]
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
