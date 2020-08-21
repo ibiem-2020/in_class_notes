@@ -1,0 +1,121 @@
+---
+title: "Data Viz"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+# Setup
+```{r}
+library(ggplot2)
+```
+
+```{r}
+read.csv("/data/gapminder_data.csv") ->
+  gapminder
+gapminder
+```
+
+```{r}
+ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) +
+  geom_point()
+```
+
+
+```{r}
+ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp))
+```
+
+```{r}
+ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) +
+  geom_point()
+```
+
+
+# Layers
+```{r}
+ggplot(data = gapminder, mapping = aes(x=year, y=lifeExp)) +
+  geom_point()
+```
+
+```{r}
+ggplot(data = gapminder, mapping = aes(x=year, y=lifeExp, by=country)) +
+  geom_point() +
+  geom_line(mapping=aes(color=continent))
+```
+
+# Transformations
+```{r}
+ggplot(data =gapminder, mapping = (aes(x = gdpPercap, y = lifeExp))) +
+  geom_point()
+```
+
+```{r}
+ggplot(data =gapminder, mapping = (aes(x = gdpPercap, y = lifeExp))) +
+  geom_point(alpha=0.3) +
+  scale_x_log10() +
+  geom_smooth(method="lm", size=2, color="green")
+```
+
+# Panels
+```{r}
+ggplot(data = gapminder, mapping= aes(x=year, y= lifeExp, by=country)) +
+  geom_line() + 
+  facet_wrap( ~ continent)
+```
+
+```{r}
+americas = gapminder[gapminder$continent == "Americas",]
+
+ggplot(data = americas, mapping= aes(x=year, y= lifeExp, by=country)) +
+  geom_line() + 
+  facet_wrap( ~ country) +
+  labs(
+    x="Year", 
+    y ="Life Expectancy", 
+    title = "Figure 1") +
+  theme(axis.text.x = element_text(angle=90, hjust=1)) ->
+  lifeexp_by_year_americas
+
+lifeexp_by_year_americas
+```
+
+```{r}
+ggsave(filename = "lifeexp_by_year_americas.png", plot=lifeexp_by_year_americas, width=12, height=10, dpi= 300, units="cm")
+```
+
+
+
+
+# Overlap
+```{r}
+library(tibble)
+library(ggplot2)
+
+tribble(
+  ~sample, ~time, ~val,
+  "a",   1,  1,
+  "a",   1,  2,
+  "b",   2,  2,
+  "c",   3,  3,
+  "c",   1,  2
+) -> overlap_df
+overlap_df
+```
+
+
+```{r}
+ggplot(overlap_df, aes(x=time, y=val, colour = sample, shape=sample)) + 
+  geom_point(size=8) +
+  theme_classic()
+```
+
+```{r}
+ggplot(overlap_df, aes(x=time, y=val, colour = sample, shape=sample)) + 
+  geom_point(size=8, alpha=0.5) +
+  theme_classic()
+```
+
