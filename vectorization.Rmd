@@ -1,0 +1,53 @@
+---
+title: "Vectorization"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r}
+x = 1:4
+x
+```
+
+```{r}
+x * 2
+```
+
+```{r}
+y = 6:9
+x + y
+```
+
+```{r}
+x * c(10,20)
+```
+
+```{r}
+x >2
+```
+
+
+```{r}
+a = x >3
+a
+```
+
+```{r}
+log(x)
+```
+
+```{r}
+m = matrix(1:12, nrow=3, ncol=4)
+m
+```
+
+```{r}
+m * -1
+```
+
+
+

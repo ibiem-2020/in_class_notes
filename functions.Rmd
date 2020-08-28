@@ -1,0 +1,172 @@
+---
+title: "Functions"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+fahr_to_kelvin = function(fahr){
+  kelvin = ((fahr - 32) * (5/9)) + 273.15
+  return(kelvin)
+}
+
+fahr_to_kelvin(c(32,212))
+```
+
+```{r}
+kelvin_to_celcius = function(kelvin){
+  celcius = kelvin - 273.15
+  return(celcius)
+}
+
+kelvin_to_celcius(273.15)
+kelvin_to_celcius(373.15)
+
+```
+
+```{r}
+fahr_to_celcius = function(fahr) {
+  kelvin = fahr_to_kelvin(fahr)
+  celcius = kelvin_to_celcius(kelvin)
+  return(celcius)
+}
+
+fahr_to_celcius(c(212, 32, -40))
+
+
+```
+
+# Defensive Programming
+
+```{r}
+fahr_to_kelvin("dog")
+```
+
+```{r}
+fahr_to_kelvin = function(fahr){
+  if(is.numeric(fahr) != TRUE){
+    stop("Input to fahr_to_kelvin must be numeric vector!")
+  }
+  kelvin = ((fahr - 32) * (5/9)) + 273.15
+  return(kelvin)
+}
+```
+
+```{r}
+fahr_to_kelvin(212)
+fahr_to_kelvin(32)
+fahr_to_kelvin("dog")
+```
+
+```{r}
+fahr_to_kelvin = function(fahr){
+  if(is.numeric(fahr)){
+    kelvin = ((fahr - 32) * (5/9)) + 273.15
+    return(kelvin)
+  } else{
+    stop("Input to fahr_to_kelvin must be numeric vector!")
+  }
+}
+fahr_to_kelvin(212)
+fahr_to_kelvin(32)
+fahr_to_kelvin("dog")
+```
+
+
+```{r}
+fahr_to_kelvin = function(fahr){
+  stopifnot(is.numeric(fahr))
+  kelvin = ((fahr - 32) * (5/9)) + 273.15
+  return(kelvin)
+}
+fahr_to_kelvin(212)
+fahr_to_kelvin(32)
+# fahr_to_kelvin("dog")
+# fahr_to_kelvin(2000)
+fahr_to_kelvin(-40)
+
+```
+
+# More combining functions
+
+```{r}
+gapminder = read.csv("/data/gapminder_data.csv")
+head(gapminder)
+```
+
+```{r}
+calcGDP = function(dat) {
+  gdp = dat$pop * dat$gdpPercap
+  return(gdp)
+}
+```
+
+```{r}
+calcGDP(head(gapminder))
+```
+
+
+```{r}
+
+dat = 200
+
+calcGDP = function(dat, year=NULL, country=NULL) {
+  if(!is.null(year)){
+    dat = dat[dat$year %in% year, ]
+  }
+  if (!is.null(country)){
+    dat = dat[dat$country %in% country, ]
+  }
+  gdp = dat$pop * dat$gdpPercap
+  dat = cbind(dat, gdp=gdp)
+  return(dat)
+}
+```
+
+```{r}
+mypet = "bird"
+
+
+if(mypet %in% c("cat", "bird", "rabbit")) {
+  
+  print("Good choice")
+} else {
+  print("I don't like that pet")
+}
+
+```
+
+
+
+```{r}
+dat
+```
+
+```{r}
+calcGDP(gapminder)
+```
+
+```{r}
+gapminder
+```
+
+```{r}
+
+```
+
+
+```{r}
+calcGDP(gapminder, year=2007)
+```
+
+```{r}
+calcGDP(gapminder, country=c("Angola", "Argentina"), year=c(1957, 1992, 1977))
+```
+
+```{r}
+dat
+```
+
