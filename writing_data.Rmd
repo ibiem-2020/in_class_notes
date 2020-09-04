@@ -1,0 +1,18 @@
+---
+title: "Writing Data"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(readr)
+
+read_csv("/data/gapminder_data.csv") %>%
+  filter(country=="Australia") %>%
+  write_csv("data/autralia_subset.csv")
+```
+
+

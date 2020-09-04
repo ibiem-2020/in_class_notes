@@ -1,0 +1,138 @@
+---
+title: "tidyr_setup_and_play"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
+```{r}
+library(readr)
+library(tidyr)
+```
+
+```{r}
+read_csv("/data/gapminder_data.csv") ->
+  gapminder
+gapminder
+```
+
+
+# From wide to long format with pivot_longer()
+We can select the columns that will be pivoted by name . . .
+
+```{r}
+read_csv("/data/gapminder_wide.csv") ->
+  gap_wide
+gap_wide
+```
+
+```{r}
+colnames(gap_wide)
+```
+
+
+
+
+```{r}
+gap_wide %>%
+  pivot_longer(
+    cols= c(starts_with("pop"),
+            starts_with("gdpPercap"),
+            starts_with("lifeExp")),
+    names_to = "obstype_year",
+    values_to = "obs_values")
+```
+
+
+
+m_32
+f_73
+m_25
+
+```{r}
+gap_wide %>%
+  pivot_longer(cols = c(-continent, -country), 
+               names_to = "obstype_year",
+               values_to = "obs_values") %>%
+  separate(obstype_year, into = c("obs_type", "year"), sep="_") %>%
+  mutate(year=as.integer(year)) ->
+  gap_long
+gap_long
+```
+
+# From long to intermediate
+```{r}
+gap_long %>%
+  pivot_wider(names_from = obs_type, values_from = obs_values) ->
+  gap_normal
+gap_normal
+```
+
+```{r}
+dim(gap_normal)
+dim(gapminder)
+```
+```{r}
+gapminder
+```
+
+```{r}
+gap_normal %>%
+  select(names(gapminder)) %>%
+  arrange(country) %>%
+  mutate(year=as.double(year))->
+  gap_normal
+gap_normal
+```
+
+
+```{r}
+all.equal(gap_normal, gapminder)
+```
+
+
+```{r}
+gap_wide %>%
+  pivot_longer(
+    cols = c(-continent, -country),
+    names_to = "obstype_year", values_to = "obs_values"
+  ) -> 
+  gap_long
+gap_long
+```
+
+We need to deal with `obstype_year`
+
+
+```{r}
+gap_long %>%
+  separate(obstype_year, into = c("obs_type", "year"), sep="_") ->
+  gap_long
+gap_long$year = as.integer(gap_long$year)
+gap_long
+```
+
+But this is problematic for two reasons:
+
+1. Try running the above chunk a second time.  What happens? Why?
+2. Look at the part where we make year into an integer. What is wrong with that
+
+I prefer to do it all in one go (if possible), building it up line by line . . .
+
+```{r}
+gap_wide %>%
+  pivot_longer(
+    cols = c(-continent, -country),
+    names_to = "obstype_year", values_to = "obs_values") %>%
+  separate(obstype_year, into=c("obs_type", "year"), sep="_") %>%
+  mutate(year = as.integer(year)) ->
+  gap_long
+```
+
+# From long to intermediate format with pivot_wider()
+
+
