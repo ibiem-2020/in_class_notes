@@ -1,0 +1,35 @@
+---
+title: "Navigating Files"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{bash}
+ls
+```
+
+```{bash}
+ls -F
+```
+
+```{bash}
+ls -F /
+```
+
+```{bash}
+ls -F ~/data-shell
+```
+
+```{bash}
+ls -sF ~/data-shell
+```
+
+```{bash}
+ls --help
+```
+
+
