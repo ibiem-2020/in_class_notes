@@ -1,0 +1,23 @@
+---
+title: "Bash Setup"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{bash}
+
+```
+
+
+```{r}
+
+```
+
+```{bash}
+cd ~
+wget --no-clobber http://swcarpentry.github.io/shell-novice/data/data-shell.zip
+unzip -o data-shell.zip
+```
