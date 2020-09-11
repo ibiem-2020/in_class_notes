@@ -16,5 +16,79 @@ getwd()
 ```
 
 ```{bash}
+ls
+```
+
+```{bash}
+ls -F
+```
+
+```{bash}
+ls -F /
+```
+
+```{bash}
+ls -F ~/data-shell
+```
+
+```{bash}
+ls -sF ~/data-shell
+```
+
+```{bash}
+ls --help
+```
+
+```{bash}
+man ls
+```
+
+```{bash}
+ls -j
+```
+
+```{bash}
+ls -F ~/data-shell/molecules
+```
+
+```{bash}
+pwd
+cd ~/data-shell/
+pwd
+ls
+```
+
+```{bash}
+cd ~/data-shell/molecules
+ls
+```
+
+```{bash}
+cd /home/guest/data-shell/molecules
+pwd
+```
+
+```{bash}
+ls
+cd data-shell
+```
+
+```{bash}
+ls -ltrh
+```
+
+```{bash}
+cd ~/data-shell/molecules
+pwd
+cd ../../../../..
+pwd
+```
+
+```{bash}
+ls -F ~/
+```
+
+```{bash}
+ls -aF ~/
 ```
 
